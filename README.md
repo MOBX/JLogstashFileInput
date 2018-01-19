@@ -1,12 +1,12 @@
 # JLogstashFileInput
 logstash file input plugin implements by java
 
-##写在前面
+## 写在前面
 写程序有时候真的有点难，要考虑各种情况。
 
 应用在运行中，会不断生成日志文件。假如要实现一个日志收集的工具，不考虑其它的分析功能，只考虑收集，有哪些方面要考虑的？
 
-####首先看下一般的log框架是如何输出日志的：
+#### 首先看下一般的log框架是如何输出日志的：
 
 可能是这样的：zxc.log.1,  zxc.log.2, zxc.log.3, zxc.log.4, zxc.log.5 循环输出；
 
@@ -15,7 +15,7 @@ logstash file input plugin implements by java
 可能是这样的：log.out，每次重启都会生成一个新的log.out，覆盖旧的文件。
 
 
-####那么，我们有哪些方面要实现和注意的？
+#### 那么，我们有哪些方面要实现和注意的？
 
 * 提供正则或者globs方式的通配符。
 * 要能判断文件是不是新建的。
@@ -30,7 +30,7 @@ logstash file input plugin implements by java
 * 文件系统的inode会被回收利用，能不能处理这个？
 * 有没有控制读进内存的数据的大小，防止占用过多的内存？
 
-####logstash的实现
+#### logstash的实现
 * 利用inode来识别新文件;
 * 区分了设备，文件名，文件的不同版本;
 * 利用rename原子性地保存pos;
